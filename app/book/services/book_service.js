@@ -58,23 +58,6 @@ exports.getBookById = async (id) => {
 
 }
 
-
-
-exports.createBooks = async (data) => {
-
-    try{
-        
-        let result = await bookRepo.createBooks(data);
-        return result;
-
-    }catch(err){
-
-        throw new Error(err);
-
-    }
-    
-}
-
 module.exports.updateStock = async (bookId, isTrue = true) => { //IF false will reduce stock
 
     try{

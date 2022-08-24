@@ -34,6 +34,16 @@ exports.serverError =  (error) => {
 
 }
 
+exports.notExist =  (message) => {
+   
+    responseReturn.status = true;
+    responseReturn.code = 200;
+    responseReturn.message = message;
+    
+    return responseReturn;
+
+}
+
 exports.notFound =  (message) => {
    
     responseReturn.status = false;

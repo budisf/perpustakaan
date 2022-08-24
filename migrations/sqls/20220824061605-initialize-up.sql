@@ -18,6 +18,8 @@ CREATE TABLE public.book (
 	image_m varchar(255) NULL,
 	image_l varchar(255) NULL,
 	stok int4 NULL DEFAULT 1,
+	average_ratting float8 NULL DEFAULT 4.567773922134,
+	rattings_count int4 NULL DEFAULT 48,
 	CONSTRAINT book_pkey PRIMARY KEY (id)
 );
 

@@ -10,6 +10,7 @@ var routers = require("express").Router();
 *** Get Controllers
 **/
 const bookController = require(path.resolve('app/book/controllers/book_controller'));
+const bookRepo = require(path.resolve('app/book/repositories/book_repository'))
 
 module.exports = app => {
 
@@ -17,8 +18,9 @@ module.exports = app => {
 
         router.get('/', bookController.index);
         router.get('/search', bookController.search);
+        router.get('/generate', bookRepo.updateRatting);
         router.get('/:id', bookController.getById);
-        router.post('/', bookController.store);
+    
 
     });
 

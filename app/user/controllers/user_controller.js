@@ -28,13 +28,15 @@ exports.login = async (req, res) => {
     let data = await userService.getUser(email)
     .then(response =>{
 
+      if(response == 0){
+        return res.status(400).json(Responses.notFound("Wrong email"));
+    }
+
       if(!Helper.comparePassword(response[0].pass, pass)) {
         return res.status(400).json(Responses.notFound("Wrong password"));
       }
 
-      if(response == 0){
-          return res.status(400).json(Responses.notFound("Wrong email / password"));
-      }
+  
 
       const list = {
         user_id : response[0].id,

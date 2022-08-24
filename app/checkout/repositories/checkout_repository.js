@@ -85,7 +85,7 @@ module.exports.getHistoryTransaction = async (id) => {
 
          await Promise.all(results.map( async (item) => {
 
-            let bookData = await this.getDetailBook(item.id)
+            let bookData = await this.getDetailTransaction(item.id)
 
                 let newData = {
                     borrowed_time : item.created_at,
@@ -105,7 +105,7 @@ module.exports.getHistoryTransaction = async (id) => {
 
 }
 
-module.exports.getDetailBook = async (transaction_id) => {
+module.exports.getDetailTransaction = async (transaction_id) => {
 
     let sql = `SELECT b.*, c.title, c.image_m, c.author FROM transaction_detail b JOIN book c ON b.book_id = c.id WHERE b.transaction_id = $1 `
     let query = await client.query(sql,[transaction_id]);
