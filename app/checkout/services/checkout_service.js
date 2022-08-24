@@ -64,6 +64,10 @@ exports.createTransaction = async (data) => {
                 return_date : data.return_date,
                 transaction_id : transaction_id
             }
+
+            //Kami beranggapan bahwa stock masih tersedia apabila data buku berhasil dimasukkan kedalam table cart
+            // jadi tidak melakukan pengecekan stock lagi disini.
+
             checkoutRepo.createDetailTransaction(dataInput);
             bookService.updateStock(n.id,false); //parameter false if reduce stock
         });
