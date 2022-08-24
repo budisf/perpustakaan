@@ -12,7 +12,7 @@ npm install
 
 untuk menginstall semua package yang dibutuhukan
 
-# migration and start
+# Migration and start
 
 1. Pastikan anda sudah mendownload postgresql di local computer anda 
 2. Buat sebuah database dengan nama perpustakaan
