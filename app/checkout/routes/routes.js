@@ -18,9 +18,14 @@ module.exports = app => {
         router.get('/', checkoutController.index);
         router.delete('/', checkoutController.delete);
         router.post('/', checkoutController.store);
-        // router.put('/:id', checkoutController.update);
-        // router.delete('/:id', checkoutController.delete);
-        // router.put('/:id', checkoutController.softDelete);
+
+    });
+
+    routers.group("/v1/transaction", (router) => { 
+
+        router.get('/', checkoutController.history);
+        router.patch('/', checkoutController.returnBook);
+        router.post('/', checkoutController.createTransaction);
 
     });
 

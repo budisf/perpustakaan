@@ -41,8 +41,8 @@ exports.delete = async (req, res) => {
     userId = req.query.user_id;
     bookId = req.query.book_id;
 
-    let cekUserExist = await helper.cekExist('users',userId);
-    let cekBookExist = await helper.cekExist('book',bookId);
+    let cekUserExist = await helper.cekExist('cart',userId,'user_id');
+    let cekBookExist = await checkoutRepo.cekExistCart(userId,bookId);
 
     if(cekUserExist == 0){
       return res.status(400).json(Responses.notFound("User not found !"));
@@ -53,6 +53,7 @@ exports.delete = async (req, res) => {
     }
 
     let data = await checkoutService.removeCart(userId, bookId)
+    .then(() => res.status(200).json(Responses.deleted(`cart`)));
     return data;
 
   }catch(err){
@@ -80,7 +81,7 @@ exports.store = async (req, res) => {
     }
 
     let stock = await bookRepo.getStock(data.book_id);
-    let cekDataExist = await checkoutRepo.cekDataCart(data);
+    let cekDataExist = await checkoutRepo.cekExistCart(data.user_id,data.book_id);
 
     if(stock == 0){
       return res.status(400).json(Responses.notFound("Book not available right now"));
@@ -100,5 +101,84 @@ exports.store = async (req, res) => {
 
   }
 
+
+}
+
+exports.createTransaction = async (req, res) => {
+
+  try{
+
+    let data = req.body ;
+    let cekUserExist = await helper.cekExist('cart',data.user_id,'user_id');
+
+    if(cekUserExist == 0){
+      return res.status(400).json(Responses.notFound("User not found !"));
+    }
+
+    let result = await checkoutService.createTransaction(data)
+    .then(() => res.status(200).json(Responses.created(`transaction`)));
+    return result;
+
+  }catch(err){
+
+    return res.status(500).json(Responses.serverError(err));
+
+  }
+
+
+}
+
+exports.history = async (req, res) => {
+  
+  try {
+    
+    userId = req.query.user_id;
+    let data = await checkoutService.getHistoryTransaction(userId)
+    .then(response =>{
+      if(response == 0){
+          return res.status(400).json(Responses.notFound("Data not found"));
+      }
+      result = Responses.list(response)
+      return res.status(200).json(result);
+
+    });
+
+    return data;
+
+  }catch(err){
+    
+    return res.status(500).json(Responses.serverError(err));
+
+  }
+
+}
+
+exports.returnBook = async (req, res) => {
+  
+  try {
+    
+    let data = req.body;
+    let cekUserExist = await helper.cekExist('transaction_header',data.user_id,'user_id');
+
+    if(cekUserExist == 0){
+      return res.status(400).json(Responses.notFound("User not found !"));
+    }
+    let results = await checkoutService.returnBook(data)
+    .then(response =>{
+      if(response == 0){
+          return res.status(400).json(Responses.notFound("Data not found"));
+      }
+      result = Responses.list(response)
+      return res.status(200).json(result);
+
+    });
+
+    return results;
+
+  }catch(err){
+    
+    return res.status(500).json(Responses.serverError(err));
+
+  }
 
 }

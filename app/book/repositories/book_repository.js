@@ -49,19 +49,18 @@ module.exports.getStock = async (id) => {
 module.exports.createBooks = async (data) => {
 
     const { name, deskripsi } = data ;
-    const sql = 'INSERT INTO coba (name, deskripsi) VALUES ($1, $2)';
+    const sql = 'INSERT INTO book (name, deskripsi) VALUES ($1, $2)';
     let result = await client.query( sql, [name, deskripsi]);
     return result;
 
 }
 
-module.exports.createBooks = async (data) => {
+module.exports.updateStock = async (bookId, stock) => {
 
-    const { name, deskripsi } = data ;
-    const sql = 'INSERT INTO coba (name, deskripsi) VALUES ($1, $2)';
-    let result = await client.query( sql, [name, deskripsi]);
+    const sql = `UPDATE book SET stok = $2 WHERE id = $1`;
+    let result = await client.query( sql, [bookId, stock]);
     return result;
 
-}
+ }
 
 

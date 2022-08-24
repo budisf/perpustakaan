@@ -44,3 +44,12 @@ exports.notFound =  (message) => {
 
 }
 
+exports.deleted =  (message) => {
+
+    responseReturn.status = true;
+    responseReturn.code = 200;
+    responseReturn.message = `Data ${message} Deleted`;
+
+    return responseReturn;
+}
+
