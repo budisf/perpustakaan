@@ -18,6 +18,9 @@ untuk menginstall semua package yang dibutuhukan
 2. Buat sebuah database dengan nama perpustakaan
 3. Kembali ke terminal anda, untuk melakukan migration table anda cukup ketikkan perintah 
 
+```bash
+npm install -g db-migrate-pg
+```
 
 ```bash
 db-migrate up initialize
