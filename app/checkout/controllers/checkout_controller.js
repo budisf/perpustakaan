@@ -209,17 +209,24 @@ exports.returnBook = async (req, res) => {
       return res.status(400).json(Responses.notFound("book_id required"));
     }
 
+    for(m of bookId){
+      let cekBookExist = await helper.cekExist('book',m);
+      if (cekBookExist == 0){
+        return res.status(200).json(Responses.notExist("Book not found !"));
+      }
+    }
+
     let cekUserExist = await helper.cekExist('transaction_header',data.user_id,'user_id');
 
     if(cekUserExist == 0){
-      return res.status(200).json(Responses.notExist("Data not found !"));
+      return res.status(200).json(Responses.notExist("User not found !"));
     }
     let results = await checkoutService.returnBook(data)
     .then(response =>{
       if(response == 0){
-          return res.status(400).json(Responses.notFound("Data not found"));
+          return res.status(200).json(Responses.notExist("Data not found"));
       }
-      result = Responses.list(response)
+      let result = Responses.list(response)
       return res.status(200).json(result);
 
     });

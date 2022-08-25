@@ -43,7 +43,7 @@ npm start
 
 
 ## Collections 
-https://www.getpostman.com/collections/a2e7a9fdeeb64ed580e1 
+https://www.getpostman.com/collections/a2e7a9fdeeb64ed580e1
 
 ## API Documentation
 https://documenter.getpostman.com/view/7342285/VUqrQJ7B

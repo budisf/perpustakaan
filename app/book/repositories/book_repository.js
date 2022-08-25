@@ -54,41 +54,4 @@ module.exports.updateStock = async (bookId, stock) => {
 
  }
 
- module.exports.updateRatting = async (req, res) => {
- 
-
-    const sql = 'SELECT isbn FROM book';
-    let data = await client.query(sql);
-    let isbn = data.rows;
-    for (item of isbn){
-        // console.log(item.isbn)
-  
-
-
-        const sql2 = 'SELECT book_ratting FROM ratting WHERE isbn = $1';
-        let data2 = await client.query(sql2,[item.isbn]);
-        ratting = data2.rows;
-
-        const sqlC = `SELECT COUNT(*) FROM ratting WHERE isbn = $1`;
-        let dataC = await client.query(sqlC,[item.isbn]);
-        let totalArray = dataC.rows;
-        let total = totalArray[0].count
-    
-        let jumlah = 0;
-        for (m of ratting){
-            jumlah += m.book_ratting; 
-        }
-        let totalAverage = jumlah / total;
-
-
-        const sql3 = `UPDATE book SET average_ratting = $1, rattings_count = $2 WHERE isbn = $3`;
-        let result = await client.query( sql3, [totalAverage, total, item.isbn]);
-
-        console.log(`${item.isbn} avarege = ${totalAverage}`);
-        console.log(`${item.isbn} total = ${total}`)
-
-    }
-
-}
-
 
