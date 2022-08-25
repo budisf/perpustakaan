@@ -22,6 +22,15 @@ untuk menginstall semua package yang dibutuhukan
 npm install -g db-migrate-pg
 ```
 
+apabila anda menggunakan macOS dan terjadi permission denied, silahkan coba gunakan script berikut 
+
+```bash
+sudo npm install -g db-migrate-pg  --unsafe-perm=true --allow-root
+```
+
+kemudian jalankan perintah berikut untuk lakukan migrasi 
+
+
 ```bash
 db-migrate up initialize
 ```
