@@ -14,9 +14,10 @@ untuk menginstall semua package yang dibutuhukan
 
 # Migration and start
 
-1. Pastikan anda sudah mendownload postgresql di local computer anda 
-2. Buat sebuah database dengan nama perpustakaan
-3. Kembali ke terminal anda, untuk melakukan migration table anda cukup ketikkan perintah 
+1. Pastikan anda sudah mendownload postgresql di local computer anda berikut link tutorial install postgresql  https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/
+
+3. Buat sebuah database dengan nama perpustakaan
+4. Kembali ke terminal anda, untuk melakukan migration table anda cukup ketikkan perintah 
 
 ```bash
 npm install -g db-migrate-pg
@@ -52,7 +53,7 @@ npm start
 
 
 ## Collections 
-https://www.getpostman.com/collections/a2e7a9fdeeb64ed580e1
+https://www.getpostman.com/collections/30a3b67f513c87b6c0ea
 
 ## API Documentation
 https://documenter.getpostman.com/view/7342285/VUqrQJ7B
