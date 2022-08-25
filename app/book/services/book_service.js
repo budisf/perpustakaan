@@ -12,9 +12,9 @@ exports.getBooks = async (page,limit) => {
         let rowsCount = await bookRepo.getCount("book");
         let totalPage = Math.ceil(rowsCount / limit)
         const result = {
-            "current_page" : page == 0 ? 1 : page,
+            "current_page" : page == 0 ? 1 : parseInt(page),
             "total_page" : totalPage,
-            "total_data" : rowsCount,
+            "total_data" : parseInt(rowsCount),
             "data_per_page" : data,
 
         }
