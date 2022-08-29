@@ -3,11 +3,29 @@
 *** Basic Modules
 **/
 const path = require('path');
+const moment = require('moment');
+
 const bookService = require(path.resolve('app/book/services/book_service'))
 const Responses = require(path.resolve('response/responses'))
 
 exports.index = async (req, res) => {
   
+  var a = moment('2013-06-01');
+  var b = moment('2013-06-03');
+
+  // If you want an exclusive end date (half-open interval)
+  var i = 0;
+  for (var m = moment(a); m.isBefore(b); m.add(1, 'days')) {
+    console.log(m.format('YYYY-MM-DD'));
+    i++
+  }
+  console.log(i)
+  console.log("==================")
+  // If you want an inclusive end date (fully-closed interval)
+  for (var m = moment(a); m.diff(b, 'days') <= 0; m.add(1, 'days')) {
+    console.log(m.format('YYYY-MM-DD'));
+  }
+
   let page = req.query.page ? req.query.page : 0;
   let limit = req.query.limit ? req.query.limit : 20;
 
