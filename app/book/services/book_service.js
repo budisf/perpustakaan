@@ -1,4 +1,5 @@
 const path = require('path');
+const { title } = require('process');
 const bookRepo = require(path.resolve('app/book/repositories/book_repository'))
 
 //untuk logic
@@ -28,12 +29,22 @@ exports.getBooks = async (page,limit) => {
 
 }
 
-exports.getBookSearch = async (name) => {
+exports.getBookSearch = async (query) => {
 
     try{
-        
-        let data = await bookRepo.getBookSearch(name);
-        return data;
+        let title = query.title
+        let isbn = query.isbn
+        let author = query.author
+
+        if(title){
+            return await bookRepo.getBookSearchTitle(title);
+        }
+        if(author){
+            return await bookRepo.getBookSearchAuthor(author);
+        }
+        if(isbn){
+            return await bookRepo.getBookSearchIsbn(isbn);
+        }
 
     }catch(err){
 

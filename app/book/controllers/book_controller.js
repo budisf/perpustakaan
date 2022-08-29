@@ -37,13 +37,28 @@ exports.search = async (req, res) => {
 
   try {
 
-    let name = req.query.name;
+    let title = req.query.title;
+    let author = req.query.author;
+    let isbn = req.query.isbn;
+    let query_params = req.query
 
-    if(!name){
-      return res.status(400).json(Responses.notFound("name required"));
+    if(!title && !author && !isbn){
+      return res.status(400).json(Responses.notFound("query param required (title / author / isbn)"));
+    }
+    if(title && author && isbn){
+      return res.status(400).json(Responses.notFound("select one query param (title / author / isbn)"));
+    }
+    if(title && author){
+      return res.status(400).json(Responses.notFound("select one query param (title / author / isbn)"));
+    }
+    if(author && isbn){
+      return res.status(400).json(Responses.notFound("select one query param (title / author / isbn)"));
+    }
+    if(title && isbn){
+      return res.status(400).json(Responses.notFound("select one query param (title / author / isbn)"));
     }
 
-    let data = await bookService.getBookSearch(name)
+    let data = await bookService.getBookSearch(query_params)
     .then(response =>{
       if(response == 0){
           return res.status(200).json(Responses.notExist("Data not found"));

@@ -10,10 +10,24 @@ module.exports.getAllBooks = async (skip, limit) => {
 
 }
 
-module.exports.getBookSearch = async (name) => {
+module.exports.getBookSearchTitle = async (title) => {
  
-    const sql = `SELECT * FROM book WHERE title LIKE $1 OR author LIKE $1 OR isbn LIKE $1`;
-    let data = await client.query(sql,['\%'+name+'%']);
+    const sql = `SELECT * FROM book WHERE title LIKE $1`;
+    let data = await client.query(sql,['\%'+title+'%']);
+    return data.rows;
+
+}
+module.exports.getBookSearchAuthor = async (author) => {
+ 
+    const sql = `SELECT * FROM book WHERE author LIKE $1`;
+    let data = await client.query(sql,['\%'+author+'%']);
+    return data.rows;
+
+}
+module.exports.getBookSearchIsbn = async (isbn) => {
+ 
+    const sql = `SELECT * FROM book WHERE isbn LIKE $1`;
+    let data = await client.query(sql,['\%'+isbn+'%']);
     return data.rows;
 
 }

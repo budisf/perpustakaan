@@ -15,7 +15,7 @@ module.exports = app => {
 
     routers.group("/v1/user", (router) => { 
 
-        router.get('/login', userController.login);
+        router.post('/login', userController.login);
  
     });
 
