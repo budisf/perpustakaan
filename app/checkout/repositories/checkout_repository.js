@@ -5,7 +5,7 @@ const client = config.data;
 
 module.exports.getCartByUserId = async (id) => {
 
-    const sql = `SELECT a.id, a.title,  a.image_s FROM book a join cart b on a.id = b.book_id WHERE b.user_id = $1`;
+    const sql = `SELECT a.* FROM book a join cart b on a.id = b.book_id WHERE b.user_id = $1`;
     let data = await client.query(sql,[id]);
     return data.rows;
 

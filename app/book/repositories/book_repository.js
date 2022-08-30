@@ -55,7 +55,7 @@ module.exports.getStock = async (id) => {
     const sql = `SELECT stok FROM book WHERE id = $1`;
     let data = await client.query(sql, [id]);
     let totalArray = data.rows;
-    let stock = !totalArray ? totalArray[0].stok : 0;
+    let stock = !totalArray ? 0 : totalArray[0].stok;
     return stock;
 
 }
