@@ -107,7 +107,7 @@ module.exports.getHistoryTransaction = async (id) => {
 
 module.exports.getDetailTransaction = async (transaction_id) => {
 
-    let sql = `SELECT b.*, c.title, c.image_m, c.author FROM transaction_detail b JOIN book c ON b.book_id = c.id WHERE b.transaction_id = $1 `
+    let sql = `SELECT b.*, c.id, c.isbn, c.title, c.image_m, c.author, c.average_ratting, c.rattings_count FROM transaction_detail b JOIN book c ON b.book_id = c.id WHERE b.transaction_id = $1 `
     let query = await client.query(sql,[transaction_id]);
     return query.rows;
 
