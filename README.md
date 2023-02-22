@@ -53,7 +53,7 @@ npm start
 
 
 ## Collections 
-https://www.getpostman.com/collections/30a3b67f513c87b6c0ea
+https://api.postman.com/collections/7342285-9a68bb07-c239-4a85-9550-062a42cbf5e2?access_key=PMAT-01GSWEYMHMSNKZ613F2S6ZF41G
 
 ## API Documentation
 https://documenter.getpostman.com/view/7342285/VUqrQJ7B
