@@ -2,8 +2,9 @@
     "dev": {
       "driver": "pg",
       "user": "postgres",
-      "password": "postgres",
-      "host": "localhost",
+      "password": "d3v3l0p8015",
+      "host": "35.187.248.198",
       "database": "perpustakaan"
     }
   }
+ 

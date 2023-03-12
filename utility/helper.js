@@ -13,9 +13,6 @@ module.exports.cekExist = async (table,id, field = 'id') => {
     return total;
 
 }
-module.exports.isValidEmail = email => {
-    return /\S+@\S+\.\S+/.test(email);
-  }
 
 module.exports.comparePassword = (hashPassword, password) => {
     return bcrypt.compareSync(password, hashPassword);

@@ -58,3 +58,34 @@ https://api.postman.com/collections/7342285-9a68bb07-c239-4a85-9550-062a42cbf5e2
 ## API Documentation
 https://documenter.getpostman.com/view/7342285/VUqrQJ7B
 
+<<<<<<< Updated upstream
+=======
+
+## Build Docker 
+
+Build Image
+```bash
+docker build . -t <username-mu>/perpustakaan
+```
+untuk melihat image berjalan atau tidak silahkan ketik
+```bash
+docker images
+```
+
+Jalankan imagenya 
+```bash
+docker run -p 8888:8083 -d <username-mu>/perpustakaan
+```
+```bash
+# Get container ID
+$ docker ps
+
+# Print app output
+$ docker logs <container id>
+
+# Example
+Example app listening at http://localhost:8083
+Connection has been established successfully.
+```
+
+>>>>>>> Stashed changes

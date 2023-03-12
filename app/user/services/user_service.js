@@ -9,12 +9,10 @@ const Responses = require(path.resolve('response/responses'))
 
 exports.getUser = async (email) => {
 
-
-
   try {
 
-    let data = await userRepo.getUser(email);
-    return data;
+    let result = await userRepo.getUser(email);
+    return result;
 
   }catch(err){
 
@@ -24,4 +22,18 @@ exports.getUser = async (email) => {
 
 }
 
+exports.createUser = async (data) => {
+
+  try {
+
+    let result = await userRepo.createUser(data);
+    return result;
+
+  }catch(err){
+
+    return res.status(500).json(Responses.serverError(err));
+
+  }
+
+}
 

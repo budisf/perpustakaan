@@ -16,8 +16,9 @@ module.exports = app => {
     routers.group("/v1/user", (router) => { 
 
         router.post('/login', userController.login);
+        router.post('/register', userController.register);
  
     });
 
-    app.use('/api', routers);
+    app.use('/perpustakaan/api', routers);
 };

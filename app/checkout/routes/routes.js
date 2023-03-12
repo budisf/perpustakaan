@@ -29,5 +29,5 @@ module.exports = app => {
 
     });
 
-    app.use('/api', routers);
+    app.use('/perpustakaan/api', routers);
 };
